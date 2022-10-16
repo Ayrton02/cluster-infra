@@ -1,0 +1,1 @@
+{"buildTargets":["apply","destroy","install-metrics","plan","proxy","uninstall-metrics"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
