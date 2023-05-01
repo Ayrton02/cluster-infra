@@ -1,8 +1,12 @@
-plan:
+build:
+	docker build -t my-app ./my-app
+
+plan: build
 	terraform plan
 
-apply:
+apply: 
 	terraform apply -auto-approve
+	make install-metrics
 
 destroy:
 	terraform destroy -auto-approve
