@@ -1,22 +1,22 @@
-resource "kubernetes_deployment" "deployment-manager-app" {
+resource "kubernetes_deployment" "deployment-cluster-service" {
   metadata {
-    name   = "manager-app"
-    labels = var.manager-app-label
+    name   = "cluster-service"
+    labels = var.cluster-service-label
   }
 
   spec {
     selector {
-      match_labels = var.manager-app-label
+      match_labels = var.cluster-service-label
     }
     template {
       metadata {
-        labels = var.manager-app-label
+        labels = var.cluster-service-label
       }
       spec {
         container {
           name              = "app"
-          image             = "manager-server:latest"
-          image_pull_policy = "Never"
+          image             = "ayrtonborges2/cluster-service:2023-05-02.544128"
+          image_pull_policy = "IfNotPresent"
           port {
             container_port = 8080
           }
@@ -41,7 +41,7 @@ resource "kubernetes_service" "nodeport-manager" {
   }
 
   spec {
-    selector = var.manager-app-label
+    selector = var.cluster-service-label
     type     = "NodePort"
     port {
       port        = 8080

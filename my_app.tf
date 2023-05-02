@@ -23,7 +23,7 @@ resource "kubernetes_deployment" "deployment-my-app" {
         container {
           name              = "app"
           image             = "my-app:latest"
-          image_pull_policy = "Never"
+          image_pull_policy = "IfNotPresent"
           port {
             container_port = 8080
           }
